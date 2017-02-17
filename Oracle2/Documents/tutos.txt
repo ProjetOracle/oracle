@@ -1,0 +1,1 @@
+GridBagLayout : http://www.mediaforma.com/java-mise-en-page-gridbaglayout/

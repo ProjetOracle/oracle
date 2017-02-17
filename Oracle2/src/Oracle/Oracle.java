@@ -16,6 +16,7 @@ public class Oracle {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        WindowConnection w = new WindowConnection();
     }
     
 }
