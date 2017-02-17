@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 1052.3622 744.09448"
+   id="svg11489"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="QuizzFini.svg">
+  <defs
+     id="defs11491" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="520.0222"
+     inkscape:cy="389.10967"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1535"
+     inkscape:window-height="876"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata11494">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-308.26772)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="269.14288"
+       y="424.93362"
+       id="text12037"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan12039"
+         x="269.14288"
+         y="424.93362" /><tspan
+         sodipodi:role="line"
+         x="269.14288"
+         y="474.93362"
+         id="tspan12041" /><tspan
+         sodipodi:role="line"
+         x="269.14288"
+         y="524.93365"
+         id="tspan12043">Quizz terminé</tspan><tspan
+         sodipodi:role="line"
+         x="269.14288"
+         y="574.93365"
+         id="tspan12049" /><tspan
+         sodipodi:role="line"
+         x="269.14288"
+         y="624.93365"
+         id="tspan12055">Score : 80%</tspan><tspan
+         sodipodi:role="line"
+         x="269.14288"
+         y="674.93365"
+         id="tspan12057" /><tspan
+         sodipodi:role="line"
+         x="269.14288"
+         y="724.93365"
+         id="tspan12059">Temps : 25mn 12 sec</tspan></text>
+    <rect
+       style="fill:#646464;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.35246146px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="rect3340"
+       width="127.79039"
+       height="34.933254"
+       x="306.81909"
+       y="969.18127" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="323.42856"
+       y="995.2193"
+       id="text6110"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6112"
+         x="323.42856"
+         y="995.2193"
+         style="font-size:25px">Rejouer</tspan></text>
+    <rect
+       style="fill:#646464;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.50214845px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="rect3340-6"
+       width="260.49783"
+       height="34.783566"
+       x="474.75107"
+       y="963.54181" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="491.28571"
+       y="989.505"
+       id="text6110-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6112-3"
+         x="491.28571"
+         y="989.505"
+         style="font-size:25px">Changer de quizz</tspan></text>
+  </g>
+</svg>
