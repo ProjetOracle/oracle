@@ -111,7 +111,9 @@ public class WindowConnection extends JFrame implements ActionListener{
             System.out.println("connection en cour...");
             if(login.getText().length()!=0 || mdp.getText().length()!=0)
             {
-                personne.seConnecter(login.getText(),mdp.getText());
+                
+                erreur.setText(personne.seConnecter(login.getText(),mdp.getText()));
+                
             }
             else
             {

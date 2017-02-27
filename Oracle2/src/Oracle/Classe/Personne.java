@@ -5,6 +5,7 @@
  */
 package Oracle.Classe;
 
+import java.sql.ResultSet;
 import java.util.*;
 
 /**
@@ -12,8 +13,12 @@ import java.util.*;
  * @author WorkStation
  */
 public class Personne {
+    
+    Connecteur connecteur= new Connecteur();
+    
     int id_personne;
     String login;
+    
    private static  ArrayList<Quizz> listeOfQuizz;
 
     public Personne() {
@@ -23,6 +28,8 @@ public class Personne {
    public Personne(int id_personne, String login)
    {
        this.listeOfQuizz = new ArrayList<Quizz>();
+       this.id_personne = id_personne;
+       this.login = login;
        
    }
    
@@ -36,14 +43,36 @@ public class Personne {
         this.listeOfQuizz = new ArrayList<Quizz>();
    }
    
-   public void seConnecter(String login, String pwd)
+   public void setConnecteur(Connecteur connecteur)
    {
-   
+       this.connecteur = connecteur;
    }
+   public Connecteur getConnecteur()
+   {
+       return connecteur;
+   }
+   
+   public String seConnecter(String login, String pwd)
+   {
+       String etat="";
+       ResultSet r;
+       r = connecteur.requete("SELECT COUNT(*) FROM personne where login LIKE '"+login+"' and pwd LIKE '"+pwd+"'");
+       if(Integer.parseInt(r.toString())==1)
+       {
+           r = connecteur.requete("SELECT * FROM personne where login LIKE '"+login+"'");
+           etat = "connection";
+       }
+       else
+       {
+           etat = "erreur";
+       }
+       return etat;
+   }
+   
    
    public void seDeconnecter()
    {
-   
+        connecteur.close();
    }
     
     
