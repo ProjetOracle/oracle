@@ -5,6 +5,7 @@
  */
 package Oracle;
 
+import Oracle.Classe.Personne;
 import Oracle.Perso_Jclasse.JPersoButton;
 import Oracle.Perso_Jclasse.JPersoTextField;
 import java.awt.Color;
@@ -12,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -25,9 +27,27 @@ import javax.swing.JPanel;
  */
 
 public class WindowConnection extends JFrame implements ActionListener{
+    
+    Personne personne;
+    JPersoTextField login;
+    JPersoTextField mdp;
+    Label erreur;
+    JPersoButton buttonConnection;
+    
     public WindowConnection()
     {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Personne p = new Personne();
+        createWindows();
+    }
+    public WindowConnection(Personne personne)
+    {
+        this.personne = personne;
+        createWindows();
+    }
+    
+    private void createWindows()
+    {
+         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         this.setSize(400, 600);
         JPanel content = new JPanel();
@@ -37,15 +57,16 @@ public class WindowConnection extends JFrame implements ActionListener{
         
         
         this.setLayout(layout);
-        JPersoButton buttonConnection = new JPersoButton("Connection");
-        JPersoTextField login = new JPersoTextField("login");
-        JPersoTextField mdp = new JPersoTextField("Password");
+        buttonConnection = new JPersoButton("Connection");
+        buttonConnection.addActionListener(this);
+        login = new JPersoTextField("login");
+        mdp = new JPersoTextField("Password");
         JLabel labelLogin = new JLabel("labelLogin");
         JLabel labelMdp = new JLabel("labelMdp");
         
         labelLogin.setText("Login : ");
         labelMdp.setText("Mot de passe : ");
-        
+        erreur = new Label("");
         
         GridBagConstraints gbc = new GridBagConstraints();
        
@@ -55,8 +76,6 @@ public class WindowConnection extends JFrame implements ActionListener{
         this.setLocationRelativeTo(null);
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-    
-        
         
         gbc.gridx = 1;
         gbc.gridy = 1;
@@ -72,14 +91,14 @@ public class WindowConnection extends JFrame implements ActionListener{
         this.add(mdp,gbc);
         gbc.gridx = 1;
         gbc.gridy = 5;
-        
         this.add(buttonConnection,gbc);
-
+        gbc.gridx = 1;
+        gbc.gridy = 6;
+        this.add(erreur, gbc);
         
-        
-        
-      
         this.setVisible(true);
+        
+            
     }
     
     
@@ -87,9 +106,22 @@ public class WindowConnection extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         
-        if(source =="Connection")
+        if(source == buttonConnection )
         {
-        
+            System.out.println("connection en cour...");
+            if(login.getText().length()!=0 || mdp.getText().length()!=0)
+            {
+                personne.seConnecter(login.getText(),mdp.getText());
+            }
+            else
+            {
+                erreur.setText("Veuillez entrer un mot de passe et/ou un login");
+                
+            }
+            
+            
+            
+            
         }
     }
     
