@@ -20,15 +20,15 @@ public class Connecteur {
      * create a new instance of connecteur
      */
     public Connecteur() {
-        String username = "root";
-        String password = null;
-        String bdd = "compagnieaerienne";
-        String port = "3306";
+        String username = "system";
+        String password = "password";
+        String bdd = "xe";
+        String port = "1521";
  
-        String url = "jdbc:oracle:thin:@localhost:1521:cei";
+        String url = "jdbc:oracle:thin:@192.168.43.254:"+port+":cei";
  
         try{
-            Class.forName("oracle.jdbc.OracleDriver");//ici, ça ne marche plus et lève une exception aparement avec CLASSPATH
+            Class.forName("oracle.jdbc.driver.OracleDriver");//ici, ça ne marche plus et lève une exception aparement avec CLASSPATH
         }catch(java.lang.ClassNotFoundException e) {
             System.err.print("ClassNotFoundException: ");
             System.err.println(e.getMessage());

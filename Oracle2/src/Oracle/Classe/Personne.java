@@ -52,27 +52,29 @@ public class Personne {
        return connecteur;
    }
    
-   public String seConnecter(String login, String pwd)
+   public boolean  seConnecter(String login, String pwd)
    {
-       String etat="";
+       
        ResultSet r;
        r = connecteur.requete("SELECT COUNT(*) FROM personne where login LIKE '"+login+"' and pwd LIKE '"+pwd+"'");
        if(Integer.parseInt(r.toString())==1)
        {
            r = connecteur.requete("SELECT * FROM personne where login LIKE '"+login+"'");
-           etat = "connection";
+           return true;
        }
        else
        {
-           etat = "erreur";
+           return false;
        }
-       return etat;
    }
+   
    
    
    public void seDeconnecter()
    {
-        connecteur.close();
+       
+        this.id_personne = -1;
+        this.login = "";
    }
     
     
