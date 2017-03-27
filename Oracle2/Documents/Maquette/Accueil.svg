@@ -1,111 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="297mm"
-   height="210mm"
-   viewBox="0 0 1052.3622 744.09448"
-   id="svg2"
-   version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="Accueil.svg">
-  <defs
-     id="defs4" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="995.39619"
-     inkscape:cy="300"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     inkscape:window-width="1535"
-     inkscape:window-height="876"
-     inkscape:window-x="65"
-     inkscape:window-y="24"
-     inkscape:window-maximized="1" />
-  <metadata
-     id="metadata7">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     inkscape:label="Calque 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-308.26772)">
-    <rect
-       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect3336"
-       width="428.57144"
-       height="85.714287"
-       x="302.85715"
-       y="473.5051" />
-    <rect
-       style="fill:#646464;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.03098595px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       id="rect3340"
-       width="431.39758"
-       height="88.540443"
-       x="314.87262"
-       y="832.37769" />
-    <rect
-       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect3336-3"
-       width="428.57144"
-       height="85.714287"
-       x="311.42856"
-       y="647.21936" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="442.85715"
-       y="446.64792"
-       id="text4157"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         x="442.85715"
-         y="446.64792"
-         id="tspan4161">Login</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="382.66769"
-       y="617.11163"
-       id="text4157-6"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         x="382.66769"
-         y="617.11163"
-         id="tspan4187">Mot de passe</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="421.42856"
-       y="888.07648"
-       id="text4191"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         x="421.42856"
-         y="888.07648"
-         id="tspan4195">Se connecter</tspan></text>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg2" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" sodipodi:docname="Accueil.svg" inkscape:version="0.91 r13725"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="841.89px"
+	 height="595.275px" viewBox="0 0 841.89 595.275" enable-background="new 0 0 841.89 595.275" xml:space="preserve">
+<sodipodi:namedview  showgrid="false" inkscape:cy="300" inkscape:cx="995.39619" inkscape:zoom="0.35" borderopacity="1.0" bordercolor="#666666" pagecolor="#ffffff" id="base" inkscape:window-maximized="1" inkscape:window-y="24" inkscape:window-x="65" inkscape:window-width="1535" inkscape:document-units="px" inkscape:current-layer="layer1" inkscape:pageshadow="2" inkscape:window-height="876" inkscape:pageopacity="0.0">
+	</sodipodi:namedview>
+<rect id="rect3336" x="249.286" y="114.19" fill="#FFFFFF" stroke="#000000" stroke-width="2" width="342.856" height="68.571"/>
+<rect id="rect3340" x="247.898" y="410.288" fill="#646464" stroke="#000000" stroke-width="1.031" width="345.119" height="70.832"/>
+<rect id="rect3336-3" x="249.143" y="266.161" fill="#FFFFFF" stroke="#000000" stroke-width="2" width="342.856" height="68.572"/>
+<text transform="matrix(1 0 0 1 381.2852 101.7041)" font-family="'ArialMT'" font-size="32">Login</text>
+<text transform="matrix(1 0 0 1 323.1348 254.0752)" font-family="'ArialMT'" font-size="32">Mot de passe</text>
+<text transform="matrix(1 0 0 1 337.1426 454.8467)" font-family="'ArialMT'" font-size="32">Se connecter</text>
+<rect fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="841.89" height="595.275"/>
 </svg>
