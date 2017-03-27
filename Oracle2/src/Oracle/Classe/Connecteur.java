@@ -25,7 +25,7 @@ public class Connecteur {
         String bdd = "xe";
         String port = "1521";
  
-        String url = "jdbc:oracle:thin:@192.168.43.254:"+port+":cei";
+        String url = "jdbc:oracle:thin:@192.168.43.254:"+port+":xe";
  
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");//ici, ça ne marche plus et lève une exception aparement avec CLASSPATH
