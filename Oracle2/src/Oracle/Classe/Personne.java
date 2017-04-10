@@ -17,9 +17,9 @@ public class Personne {
     
     Connecteur connecteur= new Connecteur();
     
-    int id_personne;
-    String login;
-    Fonction fonction;
+    private int id_personne;
+    private String login;
+    private Fonction fonction;
     
     
    private static  ArrayList<Quizz> listeOfQuizz;
@@ -83,7 +83,7 @@ public class Personne {
        else
        {
            System.out.println("Recuperation des informations");
-           this.login = r.getString("PSEUDO");
+           this.setLogin(r.getString("PSEUDO"));
            this.id_personne = r.getInt("ID_PERSONNE");
            
            
@@ -108,8 +108,22 @@ public class Personne {
    {
        
         this.id_personne = -1;
-        this.login = "";
+        this.setLogin("");
    }
+
+    /**
+     * @return the login
+     */
+    public String getLogin() {
+        return login;
+    }
+
+    /**
+     * @param login the login to set
+     */
+    public void setLogin(String login) {
+        this.login = login;
+    }
     
     
 }

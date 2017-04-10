@@ -104,7 +104,6 @@ public class WindowConnection extends JFrame implements ActionListener{
         this.setVisible(true);
     
         Oracle.listeFenetres.add(this);
-        
     }    
     
     @Override
@@ -119,10 +118,6 @@ public class WindowConnection extends JFrame implements ActionListener{
             System.out.println("connection en cour...");
             if(login.getText().length()!=0 || mdp.getText().length()!=0)
             {
-                
-                
-                
-                
                 try {
                     if(personne.seConnecter(login.getText(),mdp.getText()))
                     {
@@ -130,6 +125,7 @@ public class WindowConnection extends JFrame implements ActionListener{
                         for (int i = 0; i<Oracle.listeFenetres.size(); i++) {
                             if (Oracle.listeFenetres.get(i).getClass().toString().equals("class Oracle.ListeQuizz")) {
                                 ListeQuizz tmp = (ListeQuizz)Oracle.listeFenetres.get(i);
+                                tmp.affichage(personne);
                                 tmp.setVisible(true);
                             }
                             else {
@@ -137,6 +133,7 @@ public class WindowConnection extends JFrame implements ActionListener{
                                 tmp.setVisible(false);
                             }
                         }
+                        
                     }
                     else
                     {
