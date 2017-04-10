@@ -36,7 +36,7 @@ public class JPersoButton extends JButton{
         copyCaracs(j);
     }
     
-    public JPersoButton(JPersoButton j, String source, String nom)
+    public JPersoButton(JPersoButton j, String source, String name)
     {
         super(source);
         this.name = name;
