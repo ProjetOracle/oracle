@@ -23,5 +23,6 @@ public class Oracle {
         WindowConnection w = new WindowConnection();
         Administration admin = new Administration();
         ListeQuizz quizzs = new ListeQuizz();
+        QuizzAdmin creerQuizz = new QuizzAdmin();
     }
 }

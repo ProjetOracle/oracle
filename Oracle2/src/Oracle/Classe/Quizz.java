@@ -145,7 +145,7 @@ public class Quizz {
         
         while(r.next())
         {
-            ResultSet r_score = connecteur.requete("SELECT score FROM participe WHERE id_personne = "+personne.id_personne);
+            ResultSet r_score = connecteur.requete("SELECT score FROM participe WHERE id_personne = "+personne.getId_personne());
             r_score.next();
             ResultSet r_maxScore = connecteur.requete("SELECT MAX(score) FROM participe WHERE id_quizz = "+r.getInt("ID_QUIZZ"));
             r_maxScore.next();
@@ -158,7 +158,7 @@ public class Quizz {
             {
                 classement_total++;
             
-                if(r_classement.getInt("ID_PERSONNE") <= personne.id_personne)
+                if(r_classement.getInt("ID_PERSONNE") <= personne.getId_personne())
                 {
             
                 }
@@ -171,20 +171,7 @@ public class Quizz {
             
             
             quizzList.add(new Quizz(r.getString("NOM"), r.getInt("DUREE_QUIZZ"), r.getInt("NIVEAU"), r_score.getInt("SCORE"), r_maxScore.getInt("SCORE"), classement, classement_total));
-        }
-        
-        
-            
-        
-        
-        
-               
-               
-               
-        
-       
-         
-                
-                
+        }    
+             
     }
 }

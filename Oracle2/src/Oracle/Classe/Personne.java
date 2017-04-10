@@ -87,7 +87,7 @@ public class Personne {
    }
    public int getId()
    {
-       return id_personne;
+       return getId_personne();
    }
    
    public boolean  seConnecter(String login, String pwd) throws SQLException
@@ -104,7 +104,7 @@ public class Personne {
        {
            System.out.println("Recuperation des informations");
            this.setLogin(r.getString("PSEUDO"));
-           this.id_personne = r.getInt("ID_PERSONNE");
+           this.setId_personne(r.getInt("ID_PERSONNE"));
            
            
            
@@ -127,7 +127,7 @@ public class Personne {
    public void seDeconnecter()
    {
        
-        this.id_personne = -1;
+       this.setId_personne(-1);
         this.setLogin("");
    }
 
@@ -143,6 +143,20 @@ public class Personne {
      */
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    /**
+     * @return the id_personne
+     */
+    public int getId_personne() {
+        return id_personne;
+    }
+
+    /**
+     * @param id_personne the id_personne to set
+     */
+    public void setId_personne(int id_personne) {
+        this.id_personne = id_personne;
     }
     
     

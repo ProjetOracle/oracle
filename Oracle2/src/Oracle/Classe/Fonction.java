@@ -50,7 +50,7 @@ class Fonction {
     public Fonction(Connecteur connecteur, Personne p) throws SQLException
     {
         this.connecteur = connecteur;
-        initialize(p.id_personne);
+        initialize(p.getId_personne());
     }
     
     /**

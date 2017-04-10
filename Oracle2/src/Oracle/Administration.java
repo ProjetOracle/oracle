@@ -87,7 +87,16 @@ public class Administration extends JFrame implements ActionListener {
         }
         
         if(source == creerQuizz) {
-            System.out.println("Créer quizz");
+            for (int i = 0; i<Oracle.listeFenetres.size(); i++) {
+                if (Oracle.listeFenetres.get(i).getClass().toString().equals("class Oracle.QuizzAdmin")) {
+                    QuizzAdmin tmp = (QuizzAdmin)Oracle.listeFenetres.get(i);
+                    tmp.setVisible(true);
+                }
+                else {
+                    JFrame tmp = (JFrame)Oracle.listeFenetres.get(i);
+                    tmp.setVisible(false);
+                }
+            }
         }
 
         if(source == statistiques) {
