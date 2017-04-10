@@ -27,7 +27,7 @@ public class Administration extends JFrame implements ActionListener {
     JPersoButton statistiques;    
     JLabel admin = new JLabel("Administration");
         
-    public void createWindow() {
+    private void createWindow() {
 
         JPanel content = new JPanel();
 
@@ -38,12 +38,15 @@ public class Administration extends JFrame implements ActionListener {
         this.setLayout(layout);
         
         creerQuizz = new JPersoButton("creerQuizz");
+        creerQuizz.setText("Créer un quizz");
         creerQuizz.addActionListener(this);
 
         creerQuestion = new JPersoButton("creerQuestion");
+        creerQuestion.setText("Créer une question");
         creerQuestion.addActionListener(this);
       
         statistiques = new JPersoButton("statistiques");
+        statistiques.setText("Statistiques");
         statistiques.addActionListener(this);
         
         GridBagConstraints gbc = new GridBagConstraints();
@@ -72,7 +75,7 @@ public class Administration extends JFrame implements ActionListener {
         gbc.gridy = 4;
         this.add(statistiques,gbc);
     
-        this.setVisible(true);
+        Oracle.listeFenetres.add(this);
     }
 
     @Override

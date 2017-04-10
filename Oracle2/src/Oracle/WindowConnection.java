@@ -11,7 +11,6 @@ import Oracle.Perso_Jclasse.JPersoTextField;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -36,7 +35,6 @@ public class WindowConnection extends JFrame implements ActionListener{
     JTextArea erreur;
     JPersoButton buttonConnection;
     
-    
     public WindowConnection()
     {
         personne = new Personne();
@@ -57,7 +55,6 @@ public class WindowConnection extends JFrame implements ActionListener{
        // content.setPreferredSize(this.getSize());
         
         GridBagLayout layout = new GridBagLayout();
-        
         
         this.setLayout(layout);
         buttonConnection = new JPersoButton("Connection");
@@ -105,10 +102,10 @@ public class WindowConnection extends JFrame implements ActionListener{
         this.add(erreur, gbc);
         
         this.setVisible(true);
-        
-            
-    }
     
+        Oracle.listeFenetres.add(this);
+        
+    }    
     
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -130,7 +127,16 @@ public class WindowConnection extends JFrame implements ActionListener{
                     if(personne.seConnecter(login.getText(),mdp.getText()))
                     {
                         System.out.println("connection etablie");
-                        //ouvrir la fenêtre suivante
+                        for (int i = 0; i<Oracle.listeFenetres.size(); i++) {
+                            if (Oracle.listeFenetres.get(i).getClass().toString().equals("class Oracle.ListeQuizz")) {
+                                ListeQuizz tmp = (ListeQuizz)Oracle.listeFenetres.get(i);
+                                tmp.setVisible(true);
+                            }
+                            else {
+                                JFrame tmp = (JFrame)Oracle.listeFenetres.get(i);
+                                tmp.setVisible(false);
+                            }
+                        }
                     }
                     else
                     {
@@ -139,10 +145,8 @@ public class WindowConnection extends JFrame implements ActionListener{
                         this.mdp.setBackground(Color.red);
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(WindowConnection.class.getName()).log(Level.SEVERE, null, ex);
-                    
-                }
-                
+                    Logger.getLogger(WindowConnection.class.getName()).log(Level.SEVERE, null, ex);   
+                }   
             }
             else
             {
@@ -156,15 +160,8 @@ public class WindowConnection extends JFrame implements ActionListener{
                 {
                     this.erreur.setText(this.erreur.getText()+ " Veuillez rentrer un mot de passe \n");
                     this.mdp.setBackground(Color.red);
-                }
-                
-                
-            }
-            
-            
-            
-            
+                }        
+            }     
         }
     }
-    
 }
