@@ -15,14 +15,11 @@ import java.util.*;
  */
 public class Personne {
     
-    Connecteur connecteur= new Connecteur();
-    
-    private int id_personne;
-    private String login;
+    Connecteur       connecteur= new Connecteur();
+    private int      id_personne;
+    private String   login;
     private Fonction fonction;
-    
-    
-   private static  ArrayList<Quizz> listeOfQuizz;
+    private static   ArrayList<Quizz> listeOfQuizz;
 
    
    
@@ -31,7 +28,7 @@ public class Personne {
      */
     public Personne() {
         this.listeOfQuizz = new ArrayList<Quizz>();
-        fonction = new Fonction(connecteur);
+        fonction          = new Fonction(connecteur);
     }
     
     /**
@@ -42,9 +39,9 @@ public class Personne {
    public Personne(int id_personne, String login)
    {
        this.listeOfQuizz = new ArrayList<Quizz>();
-       this.id_personne = id_personne;
-       this.login = login;
-       fonction = new Fonction(connecteur);
+       this.id_personne  = id_personne;
+       this.login        = login;
+       fonction          = new Fonction(connecteur);
        
    }
    
@@ -57,7 +54,7 @@ public class Personne {
    public Personne(int id_personne, String login, ArrayList listeOfQuizz)
    {
         this.listeOfQuizz = new ArrayList<Quizz>();
-        fonction = new Fonction(connecteur);
+        fonction          = new Fonction(connecteur);
    }
    
    /**
@@ -66,10 +63,10 @@ public class Personne {
     */
    public Personne(Personne p)
    {
-        this.connecteur = p.connecteur;
-        this.fonction = p.fonction;
+        this.connecteur  = p.connecteur;
+        this.fonction    = p.fonction;
         this.id_personne = p.id_personne;
-        this.login = p.login;
+        this.login       = p.login;
    }
    
    public void setConnecteur(Connecteur connecteur)
@@ -93,24 +90,19 @@ public class Personne {
    public boolean  seConnecter(String login, String pwd) throws SQLException
    {
        try{
-       ResultSet r = connecteur.requete("SELECT * FROM personne where PSEUDO LIKE '"+login+"' AND MDP LIKE '"+pwd+"'");
-       
-       
-       if(!r.next())
-       {
-           return false;
-       }
-       else
-       {
-           System.out.println("Recuperation des informations");
-           this.setLogin(r.getString("PSEUDO"));
-           this.setId_personne(r.getInt("ID_PERSONNE"));
-           
-           
-           
-           //fonction.initialize(r.getInt("ID_FONCTION"));
-           return true;
-       }
+            ResultSet r = connecteur.requete("SELECT * FROM personne where PSEUDO LIKE '"+login+"' AND MDP LIKE '"+pwd+"'");
+            if(!r.next())
+            {
+                return false;
+            }
+            else
+            {
+                System.out.println("Recuperation des informations");
+                this.setLogin(r.getString("PSEUDO"));
+                this.setId_personne(r.getInt("ID_PERSONNE"));
+                //fonction.initialize(r.getInt("ID_FONCTION"));
+                return true;
+            }
        
       
        }
@@ -128,7 +120,7 @@ public class Personne {
    {
        
        this.setId_personne(-1);
-        this.setLogin("");
+       this.setLogin("");
    }
 
     /**

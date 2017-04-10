@@ -17,14 +17,11 @@ class Fonction {
     
     Connecteur connecteur;
     
-    private boolean admin = false;
-    
-    private boolean doQuizz = false;
-    
-    private boolean createQuizz = false;
-    private boolean deleteQuizz = false;
-    private boolean modifyQuizz = false;
-    
+    private boolean admin          = false;
+    private boolean doQuizz        = false;
+    private boolean createQuizz    = false;
+    private boolean deleteQuizz    = false;
+    private boolean modifyQuizz    = false;
     private boolean createQuestion = false;
     private boolean deleteQuestion = false;
     private boolean modifyQuestion = false;
@@ -68,11 +65,11 @@ class Fonction {
      */
     public Fonction(boolean admin, boolean doQuizz, boolean createQuizz, boolean deleteQuizz, boolean modifyQuizz, boolean createQuestion, boolean deleteQuestion, boolean modifyQuestion)
     {
-        this.admin = admin;
-        this.doQuizz = doQuizz;
-        this.createQuizz = createQuizz;
+        this.admin          = admin;
+        this.doQuizz        = doQuizz;
+        this.createQuizz    = createQuizz;
         this.deleteQuestion = deleteQuestion;
-        this.modifyQuizz = modifyQuizz;
+        this.modifyQuizz    = modifyQuizz;
         this.createQuestion = createQuestion;
         this.deleteQuestion = deleteQuestion;
         this.modifyQuestion = modifyQuestion;
@@ -141,14 +138,12 @@ class Fonction {
      */
     public void initialize(int id_fonction) throws SQLException
     {
-        ResultSet r =connecteur.requete("SElECT * FROM fonction WHERE id_fonction = "+id_fonction+" LIMIT 1");
+        ResultSet r         =connecteur.requete("SElECT * FROM fonction WHERE id_fonction = "+id_fonction+" LIMIT 1");
         r.first();
-        this.admin = r.getBoolean("admin");
-        
-        this.createQuizz = r.getBoolean("createQuizz");
-        this.deleteQuizz = r.getBoolean("deleteQuizz");
-        this.modifyQuizz = r.getBoolean("modifyQuizz");
-        
+        this.admin          = r.getBoolean("admin");
+        this.createQuizz    = r.getBoolean("createQuizz");
+        this.deleteQuizz    = r.getBoolean("deleteQuizz");
+        this.modifyQuizz    = r.getBoolean("modifyQuizz");
         this.createQuestion = r.getBoolean("createQuestion");
         this.deleteQuestion = r.getBoolean("deleteQuestion");
         this.modifyQuestion = r.getBoolean("modifyQuestion");

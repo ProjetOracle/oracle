@@ -15,16 +15,15 @@ import java.util.ArrayList;
  */
 public class Quizz {
     
-    Connecteur connecteur; 
-    Personne personne; 
-    
+    Connecteur     connecteur; 
+    Personne       personne;
     private String nom;
-    private int duree;
-    private int niveau;
-    private int votre_score;
-    private int meilleur_score;
+    private int    duree;
+    private int    niveau;
+    private int    votre_score;
+    private int    meilleur_score;
     private String classement;
-    private int fini;       
+    private int    fini;       
             
     
     private ArrayList quizzList;
@@ -36,8 +35,8 @@ public class Quizz {
     public Quizz(Connecteur connecteur, Personne personne)
     {
         this.connecteur = connecteur;
-        this.personne = personne;
-        quizzList = new ArrayList<Quizz>();
+        this.personne   = personne;
+        quizzList       = new ArrayList<Quizz>();
     }
     /**
      * 
@@ -47,42 +46,41 @@ public class Quizz {
      */
     public Quizz(Connecteur connecteur, Quizz q, Personne personne)
     {
-        this.connecteur = connecteur;
-        this.quizzList = q.quizzList;
-        this.classement = q.classement;
-        this.duree = q.duree;
-        this.fini = q.fini;
+        this.connecteur     = connecteur;
+        this.quizzList      = q.quizzList;
+        this.classement     = q.classement;
+        this.duree          = q.duree;
+        this.fini           = q.fini;
         this.meilleur_score = q.meilleur_score;
-        this.niveau =q.niveau;
-        this.nom = q.nom;
-        this.votre_score = q.votre_score;
-        
-        this.personne = personne;
+        this.niveau         = q.niveau;
+        this.nom            = q.nom;
+        this.votre_score    = q.votre_score;
+        this.personne       = personne;
     }
     
      public Quizz(String nom, int duree, int niveau, int votre_score, int meilleur_score, String classement, int fini)
     {
-        this.nom = nom;
-        this.duree = duree;
-        this.niveau = niveau;
-        this.votre_score = votre_score;
+        this.nom            = nom;
+        this.duree          = duree;
+        this.niveau         = niveau;
+        this.votre_score    = votre_score;
         this.meilleur_score = meilleur_score;
-        this.classement = classement;
-        this.fini = fini;
+        this.classement     = classement;
+        this.fini           = fini;
     }
     
     public Quizz(Quizz q)
     {
-        this.classement =q.classement;
-        this.connecteur =q.connecteur;
-        this.duree = q.duree;
-        this.fini = q.fini;
+        this.classement     = q.classement;
+        this.connecteur     = q.connecteur;
+        this.duree          = q.duree;
+        this.fini           = q.fini;
         this.meilleur_score = q.meilleur_score;
-        this.niveau = q.niveau;
-        this.nom = q.nom;
-        this.personne = q.personne;
-        this.quizzList = q.quizzList;
-        this.votre_score =q.votre_score;
+        this.niveau         = q.niveau;
+        this.nom            = q.nom;
+        this.personne       = q.personne;
+        this.quizzList      = q.quizzList;
+        this.votre_score    = q.votre_score;
     }
     
     public String getNom()
