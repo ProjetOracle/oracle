@@ -110,19 +110,7 @@ public class Connecteur {
         }
      }
      
-    public int count(String table)
-    {
-    int i = 0 ;
-    
-    return i;
-    }
-    
-    public int count (String table, String condition)
-    {
-    int i = 0;
-    
-    return i;
-    }
+
      
     public void close()
     {

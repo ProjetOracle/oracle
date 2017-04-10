@@ -14,6 +14,9 @@ import java.awt.GridBagLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -36,7 +39,7 @@ public class WindowConnection extends JFrame implements ActionListener{
     
     public WindowConnection()
     {
-        Personne p = new Personne();
+        personne = new Personne();
         createWindows();
     }
     public WindowConnection(Personne personne)
@@ -123,16 +126,21 @@ public class WindowConnection extends JFrame implements ActionListener{
                 
                 
                 
-                if(personne.seConnecter(login.getText(),mdp.getText()))
-                {
-                    System.out.println("connection etablie");
-                    //ouvrir la fenêtre suivante
-                }
-                else
-                {
-                   this.erreur.setText("erreur de connection, verifiez votre login et mot de passe");
-                   this.login.setBackground(Color.red);
-                   this.mdp.setBackground(Color.red);
+                try {
+                    if(personne.seConnecter(login.getText(),mdp.getText()))
+                    {
+                        System.out.println("connection etablie");
+                        //ouvrir la fenêtre suivante
+                    }
+                    else
+                    {
+                        this.erreur.setText("erreur de connection, verifiez votre login et mot de passe");
+                        this.login.setBackground(Color.red);
+                        this.mdp.setBackground(Color.red);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(WindowConnection.class.getName()).log(Level.SEVERE, null, ex);
+                    
                 }
                 
             }
