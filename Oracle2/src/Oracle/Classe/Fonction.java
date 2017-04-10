@@ -29,16 +29,43 @@ class Fonction {
     private boolean deleteQuestion = false;
     private boolean modifyQuestion = false;
     
+    /**
+     * 
+     * @param connecteur
+     * 
+     * constructeur avec connecteur seulement
+     */
     public Fonction(Connecteur connecteur)
     {
         this.connecteur = connecteur;
     }
     
-    public Fonction(Connecteur connecteur, Personne p)
+    /**
+     * 
+     * @param connecteur
+     * @param p
+     * 
+     * constructeur de recopie de fonction
+     */
+    public Fonction(Connecteur connecteur, Personne p) throws SQLException
     {
         this.connecteur = connecteur;
+        initialize(p.id_personne);
     }
     
+    /**
+     * 
+     * @param admin
+     * @param doQuizz
+     * @param createQuizz
+     * @param deleteQuizz
+     * @param modifyQuizz
+     * @param createQuestion
+     * @param deleteQuestion
+     * @param modifyQuestion 
+     * 
+     * constructeur via les fonctions à rentrer.
+     */
     public Fonction(boolean admin, boolean doQuizz, boolean createQuizz, boolean deleteQuizz, boolean modifyQuizz, boolean createQuestion, boolean deleteQuestion, boolean modifyQuestion)
     {
         this.admin = admin;
@@ -105,7 +132,13 @@ class Fonction {
         this.createQuestion = createQuestion;
     }
     
-    
+    /***
+     * 
+     * @param id_fonction Give the function to search
+     * @throws SQLException
+     * 
+     * initialise la fonction à rechercher.
+     */
     public void initialize(int id_fonction) throws SQLException
     {
         ResultSet r =connecteur.requete("SElECT * FROM fonction WHERE id_fonction = "+id_fonction+" LIMIT 1");

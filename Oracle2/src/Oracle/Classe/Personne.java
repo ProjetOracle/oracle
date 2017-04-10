@@ -24,11 +24,21 @@ public class Personne {
     
    private static  ArrayList<Quizz> listeOfQuizz;
 
+   
+   
+    /**
+     * 
+     */
     public Personne() {
         this.listeOfQuizz = new ArrayList<Quizz>();
         fonction = new Fonction(connecteur);
     }
     
+    /**
+     * 
+     * @param id_personne
+     * @param login 
+     */
    public Personne(int id_personne, String login)
    {
        this.listeOfQuizz = new ArrayList<Quizz>();
@@ -38,12 +48,22 @@ public class Personne {
        
    }
    
+   /**
+    * 
+    * @param id_personne
+    * @param login
+    * @param listeOfQuizz 
+    */
    public Personne(int id_personne, String login, ArrayList listeOfQuizz)
    {
         this.listeOfQuizz = new ArrayList<Quizz>();
         fonction = new Fonction(connecteur);
    }
    
+   /**
+    * 
+    * @param p 
+    */
    public Personne(Personne p)
    {
         this.connecteur = p.connecteur;
