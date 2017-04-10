@@ -65,13 +65,15 @@ public class Personne {
    {
        return fonction;
    }
+   public int getId()
+   {
+       return id_personne;
+   }
    
    public boolean  seConnecter(String login, String pwd) throws SQLException
    {
        try{
        ResultSet r = connecteur.requete("SELECT * FROM personne where PSEUDO LIKE '"+login+"' AND MDP LIKE '"+pwd+"'");
-       
-       
        
        
        if(!r.next())
@@ -83,28 +85,14 @@ public class Personne {
            System.out.println("Recuperation des informations");
            this.login = r.getString("PSEUDO");
            this.id_personne = r.getInt("ID_PERSONNE");
-           System.out.println(id_personne);
+           
+           
+           
            //fonction.initialize(r.getInt("ID_FONCTION"));
            return true;
        }
        
-       /*
-       //System.out.println(r.toString());
-       if(Integer.parseInt(r.toString())==1)
-       {
-           r = connecteur.requete("SELECT * FROM personne WHERE LIKE '"+login+"' LIMIT 1");
-           r.first();
-           this.login = r.getString("PSEUDO");
-           
-           this.id_personne = r.getInt("ID_PERSONNE");
-           
-           
-           return true;
-       }
-       else
-       {
-           return false;
-       }*/
+      
        }
        catch(NumberFormatException e)
        {
