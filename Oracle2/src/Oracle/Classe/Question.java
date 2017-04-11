@@ -11,13 +11,15 @@ import java.util.ArrayList;
  *
  * @author WorkStation
  */
-public class Question {
+public class Question implements SQL_Interface{
     
     Connecteur connecteur;
     
-    private int    id_question;
-    private String intitule;
-    private String imagePath;
+    private int     id_question;
+    private String  intitule;
+    private String  imagePath;
+    private boolean goodresponse;
+    
     
     private ArrayList reponses = new ArrayList<Reponse>();
     
@@ -28,16 +30,21 @@ public class Question {
     
     public Question(int id_question, String intitule, String imagePath, ArrayList<Reponse> reponses)
     {
-    
+        this.id_question  = id_question;
+        this.intitule     = intitule;
+        this.imagePath    = imagePath;
+        this.reponses     = reponses;
+        this.goodresponse = false;
     }
     
     public Question(Question q)
     {
-        this.id_question = q.id_question;
-        this.connecteur  = q.connecteur;
-        this.imagePath   = q.imagePath;
-        this.intitule    = q.intitule;
-        this.reponses    = q.reponses;
+        this.id_question  = q.id_question;
+        this.connecteur   = q.connecteur;
+        this.imagePath    = q.imagePath;
+        this.intitule     = q.intitule;
+        this.reponses     = q.reponses;
+        this.goodresponse = q.goodresponse;
     }
     
     public int getIdQuestion()
@@ -53,5 +60,32 @@ public class Question {
     {
         return imagePath;
     }
+    public ArrayList getReponse()
+    {
+        return reponses;
+    }
     
+    public void setGoodResponse(boolean goodresponse)
+    {
+        this.goodresponse = goodresponse;
+    }
+    public boolean getGoodResponse()
+    {
+        return goodresponse;
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void insert() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -13,7 +13,7 @@ import java.util.*;
  *
  * @author WorkStation
  */
-public class Personne {
+public class Personne implements SQL_Interface{
     
     Connecteur       connecteur= new Connecteur();
     private int      id_personne;
@@ -149,6 +149,21 @@ public class Personne {
      */
     public void setId_personne(int id_personne) {
         this.id_personne = id_personne;
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void insert() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

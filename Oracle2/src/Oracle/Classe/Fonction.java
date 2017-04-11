@@ -13,10 +13,11 @@ import java.sql.SQLException;
  *
  * @author WorkStation
  */
-class Fonction {
+class Fonction implements SQL_Interface{
     
     Connecteur connecteur;
     
+    private int     id;
     private boolean admin          = false;
     private boolean doQuizz        = false;
     private boolean createQuizz    = false;
@@ -140,6 +141,7 @@ class Fonction {
     {
         ResultSet r         =connecteur.requete("SElECT * FROM fonction WHERE id_fonction = "+id_fonction+" LIMIT 1");
         r.first();
+        this.id             = r.getInt("id_fonction");
         this.admin          = r.getBoolean("admin");
         this.createQuizz    = r.getBoolean("createQuizz");
         this.deleteQuizz    = r.getBoolean("deleteQuizz");
@@ -148,6 +150,21 @@ class Fonction {
         this.deleteQuestion = r.getBoolean("deleteQuestion");
         this.modifyQuestion = r.getBoolean("modifyQuestion");
         
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void insert() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

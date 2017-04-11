@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author WorkStation
  */
-public class Quizz {
+public class Quizz implements SQL_Interface{
     
     Connecteur     connecteur; 
     Personne       personne;
@@ -171,5 +171,20 @@ public class Quizz {
             quizzList.add(new Quizz(r.getString("NOM"), r.getInt("DUREE_QUIZZ"), r.getInt("NIVEAU"), r_score.getInt("SCORE"), r_maxScore.getInt("SCORE"), classement, classement_total));
         }    
              
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void insert() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
