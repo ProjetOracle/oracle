@@ -154,6 +154,11 @@ public class Personne implements SQL_Interface{
     public void setId_personne(int id_personne) {
         this.id_personne = id_personne;
     }
+    
+    public void setFonction(int id) throws SQLException
+    {
+        fonction = fonction.initialize(id);
+    }
 
     
     
@@ -170,11 +175,30 @@ public class Personne implements SQL_Interface{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     @Override
+    public void delete() throws SQLException {
+        if(this.id_personne<0)
+        {
+            System.out.println("Ne peut pas être supprimée");
+        }
+        else
+        {
+            delete(this.id_personne);
+        }
 
+    }
+    
+    @Override
+    public void delete(int id) throws SQLException {
+        
+        for(Personne p : personnes)
+        {
+            if(p.getId()==id)
+            {
+                personnes.remove(p);
+            }
+        }
+    }
     @Override
     public Personne initialize(int id) throws SQLException {
         fonction = fonction.initialize(id);
@@ -221,6 +245,7 @@ public class Personne implements SQL_Interface{
     public static ArrayList<Personne> getPersonnes() {
         return personnes;
     }
+
     
     
 }

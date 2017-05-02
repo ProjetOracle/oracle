@@ -19,4 +19,5 @@ public interface SQL_Interface <T>{
     public void update() throws SQLException;
     public void insert() throws SQLException;
     public void delete() throws SQLException; 
+    public void delete (int id) throws SQLException;
 }

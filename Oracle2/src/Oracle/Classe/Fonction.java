@@ -96,7 +96,10 @@ class Fonction implements SQL_Interface{
         this.modifyQuestion = modifyQuestion;
     }
     
-    
+    public int getIdFonction()
+    {
+        return id;
+    }
     public String getNomFonction()
     {
         return nom_fonction;
@@ -228,10 +231,31 @@ class Fonction implements SQL_Interface{
     }
 
     @Override
-    public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete() throws SQLException {
+        if(this.id<0)
+        {
+            System.out.println("Ne peut pas être supprimé");
+        }
+        else
+        {
+            delete(this.id);
+        }
     }
 
+    @Override
+    public void delete(int id) throws SQLException {
+        String sql = "delete from fonction where id_fonction = "+id;
+        connecteur.requete(sql, 1);
+        
+        for(Fonction f : fonctions)
+        {
+            if(f.id == id)
+            {
+                fonctions.remove(f);
+            }
+        }
+        
+    }
     
     
     
@@ -265,6 +289,8 @@ class Fonction implements SQL_Interface{
        
        
     }
+    
+    
     @Override
     public Fonction initialize(int id) throws SQLException{
            
@@ -282,19 +308,37 @@ class Fonction implements SQL_Interface{
        }
     
     public Fonction initialize(Personne p) throws SQLException{
-        ResultSet r         = connecteur.requete("SELECT fonction.id_fonction, admin, createQuizz, deleteQuizz, modifyQuizz, createQuestion, deleteQuestion, modifyQuestion from Personne join Fonction on personne.id_fonction = fonction.id_fonction where id_personne = "+p.getId());
+        ResultSet r         = connecteur.requete("SELECT id_fonction, admin, createQuizz, deleteQuizz, modifyQuizz, createQuestion, deleteQuestion, modifyQuestion from Personne join Fonction on personne.id_fonction = fonction.id_fonction where id_personne = "+p.getId());
         r.next();
+        if(r.wasNull())
+        {
+            this.id             = r.getInt("id_fonction");
+            this.admin          = r.getBoolean("admin");
+            this.createQuizz    = r.getBoolean("createQuizz");
+            this.deleteQuizz    = r.getBoolean("deleteQuizz");
+            this.modifyQuizz    = r.getBoolean("modifyQuizz");
+            this.createQuestion = r.getBoolean("createQuestion");
+            this.deleteQuestion = r.getBoolean("deleteQuestion");
+            this.modifyQuestion = r.getBoolean("modifyQuestion");
         
-        this.id             = r.getInt("id_fonction");
-        this.admin          = r.getBoolean("admin");
-        this.createQuizz    = r.getBoolean("createQuizz");
-        this.deleteQuizz    = r.getBoolean("deleteQuizz");
-        this.modifyQuizz    = r.getBoolean("modifyQuizz");
-        this.createQuestion = r.getBoolean("createQuestion");
-        this.deleteQuestion = r.getBoolean("deleteQuestion");
-        this.modifyQuestion = r.getBoolean("modifyQuestion");
+        }
+        else
+        {
+            if(p.getFonction().id>=0)
+            {
+                p.setFonction(id-1);
+                initialize(p);
+            }
+            else
+            {
+                System.out.println("ERREUR : ne peut pas initialiser une fonction. la fonction la plus basse sera prise");
+                
+            }
+        }
         
         return(this);
     }
+
+    
     
 }
