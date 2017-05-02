@@ -24,5 +24,6 @@ public class Oracle {
         Administration admin = new Administration();
         ListeQuizz quizzs = new ListeQuizz();
         QuizzAdmin creerQuizz = new QuizzAdmin();
+        Classement classement = new Classement();
     }
 }

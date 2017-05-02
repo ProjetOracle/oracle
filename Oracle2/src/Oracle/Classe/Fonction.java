@@ -282,8 +282,8 @@ class Fonction implements SQL_Interface{
        }
     
     public Fonction initialize(Personne p) throws SQLException{
-        ResultSet r         = connecteur.requete("SELECT id, admin, createQuizz, deleteQuizz, modifyQuizz, createQuestion, deleteQuestion, modifyQuestion from Personne join Fonction on personne.id_fonction = fonction.id where id_personne = "+p.getId());
-        r.first();
+        ResultSet r         = connecteur.requete("SELECT fonction.id_fonction, admin, createQuizz, deleteQuizz, modifyQuizz, createQuestion, deleteQuestion, modifyQuestion from Personne join Fonction on personne.id_fonction = fonction.id_fonction where id_personne = "+p.getId());
+        r.next();
         
         this.id             = r.getInt("id_fonction");
         this.admin          = r.getBoolean("admin");

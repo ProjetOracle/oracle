@@ -39,6 +39,10 @@ public class ListeQuizz extends JFrame implements ActionListener {
         JPersoButton admin = new JPersoButton("administration");
         admin.setText("Administration");
         admin.addActionListener(this);
+        
+        JPersoButton classemnt = new JPersoButton("classement");
+        classemnt.setText("Classement");
+        classemnt.addActionListener(this);
                 
         
         GridBagLayout layout = new GridBagLayout();
@@ -60,6 +64,10 @@ public class ListeQuizz extends JFrame implements ActionListener {
         gbc.gridx = 1;
         gbc.gridy = 2;
         this.add(admin,gbc);
+    
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        this.add(classemnt, gbc);
     }
     
     @Override
@@ -76,6 +84,18 @@ public class ListeQuizz extends JFrame implements ActionListener {
                     tmp.setVisible(false);
                 }
             }
-        }    
+        }
+        if(source.getName() == "classement") {
+            for (int i = 0; i<Oracle.listeFenetres.size(); i++) {
+                if (Oracle.listeFenetres.get(i).getClass().toString().equals("class Oracle.Classement")) {
+                    Classement tmp = (Classement)Oracle.listeFenetres.get(i);
+                    tmp.setVisible(true);
+                }
+                else {
+                    JFrame tmp = (JFrame)Oracle.listeFenetres.get(i);
+                    tmp.setVisible(false);
+                }
+            }
+        }   
     }
 }

@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class Personne implements SQL_Interface{
     
-    static ArrayList<Personne> personnes;
+    private static ArrayList<Personne> personnes;
     
     Connecteur       connecteur= new Connecteur();
     private int      id_personne;
@@ -192,7 +192,7 @@ public class Personne implements SQL_Interface{
     public void initialize() throws SQLException {
         String sql = "";
         ResultSet r = connecteur.requete("SELECT * FROM personne");
-        if (personnes ==null)
+        if (getPersonnes() ==null)
         {
              System.out.println("personnes n'est pas set, tentative de mise à jour via un id");
             if(this.id_personne<0)
@@ -202,17 +202,24 @@ public class Personne implements SQL_Interface{
             else
             {
                System.out.println("Personnes n'est pas set - un id a été trouvé, la fonction update (int id_fonction) est appelée");
-               personnes.add(initialize(id_personne));
+                getPersonnes().add(initialize(id_personne));
             }
         }
         else
         {
             while(r.next())
            {
-               System.out.println("ajoute de la personne: id = "+r.getInt("id_personne")+" - "+r.getString("nom")+"");
-               personnes.add(new Personne(r.getInt("id_personne"), r.getString("nom")));
+               System.out.println("ajoute de la personne: id = "+r.getInt("id_personne")+" - "+r.getString("pseudo")+"");
+                getPersonnes().add(new Personne(r.getInt("id_personne"), r.getString("pseudo")));
            }
         }
+    }
+
+    /**
+     * @return the personnes
+     */
+    public static ArrayList<Personne> getPersonnes() {
+        return personnes;
     }
     
     
