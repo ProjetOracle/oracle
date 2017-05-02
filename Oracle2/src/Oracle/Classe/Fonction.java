@@ -308,33 +308,8 @@ class Fonction implements SQL_Interface{
        }
     
     public Fonction initialize(Personne p) throws SQLException{
-        ResultSet r         = connecteur.requete("SELECT id_fonction, admin, createQuizz, deleteQuizz, modifyQuizz, createQuestion, deleteQuestion, modifyQuestion from Personne join Fonction on personne.id_fonction = fonction.id_fonction where id_personne = "+p.getId());
+        ResultSet r         = connecteur.requete("SELECT fonction.id_fonction, admin, createQuizz, deleteQuizz, modifyQuizz, createQuestion, deleteQuestion, modifyQuestion from Personne join Fonction on personne.id_fonction = fonction.id_fonction where id_personne = "+p.getId());
         r.next();
-        if(r.wasNull())
-        {
-            this.id             = r.getInt("id_fonction");
-            this.admin          = r.getBoolean("admin");
-            this.createQuizz    = r.getBoolean("createQuizz");
-            this.deleteQuizz    = r.getBoolean("deleteQuizz");
-            this.modifyQuizz    = r.getBoolean("modifyQuizz");
-            this.createQuestion = r.getBoolean("createQuestion");
-            this.deleteQuestion = r.getBoolean("deleteQuestion");
-            this.modifyQuestion = r.getBoolean("modifyQuestion");
-        
-        }
-        else
-        {
-            if(p.getFonction().id>=0)
-            {
-                p.setFonction(id-1);
-                initialize(p);
-            }
-            else
-            {
-                System.out.println("ERREUR : ne peut pas initialiser une fonction. la fonction la plus basse sera prise");
-                
-            }
-        }
         
         return(this);
     }
