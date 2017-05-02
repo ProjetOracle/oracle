@@ -147,7 +147,13 @@ public class Personne implements SQL_Interface{
     public int getId_personne() {
         return id_personne;
     }
-
+     /**
+     * @return the personnes
+     */
+    public static ArrayList<Personne> getPersonnes() {
+        return personnes;
+    }
+    
     /**
      * @param id_personne the id_personne to set
      */
@@ -239,12 +245,7 @@ public class Personne implements SQL_Interface{
         }
     }
 
-    /**
-     * @return the personnes
-     */
-    public static ArrayList<Personne> getPersonnes() {
-        return personnes;
-    }
+   
 
     
     

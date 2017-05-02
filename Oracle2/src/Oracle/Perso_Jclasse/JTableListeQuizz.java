@@ -5,6 +5,7 @@
  */
 package Oracle.Perso_Jclasse;
 
+import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
@@ -15,7 +16,7 @@ import javax.swing.JTable;
 public class JTableListeQuizz extends JTable {
     private JTable tableau;
     
-    public JTableListeQuizz() {
+    public JTableListeQuizz() throws SQLException {
         tableau = new JTable(new TableModelListeQuizz());
     }
 
