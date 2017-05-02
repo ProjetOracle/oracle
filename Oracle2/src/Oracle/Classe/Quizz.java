@@ -23,10 +23,11 @@ public class Quizz implements SQL_Interface{
     private int    votre_score;
     private int    meilleur_score;
     private String classement;
-    private int    fini;       
+    private int    fini;     
+   
             
     
-    private ArrayList quizzList;
+    private ArrayList<Quizz> quizzList;
     /**
      * 
      * @param connecteur
@@ -137,7 +138,7 @@ public class Quizz implements SQL_Interface{
     
     
     
-    private void initialize() throws SQLException
+    public void initialize() throws SQLException
     {
         ResultSet r = connecteur.requete("SELECT * FROM QUIZZ");
         
@@ -185,6 +186,11 @@ public class Quizz implements SQL_Interface{
 
     @Override
     public void delete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object initialize(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

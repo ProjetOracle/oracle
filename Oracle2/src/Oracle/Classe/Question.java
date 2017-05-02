@@ -5,6 +5,7 @@
  */
 package Oracle.Classe;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -86,6 +87,16 @@ public class Question implements SQL_Interface{
 
     @Override
     public void delete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void initialize() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object initialize(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

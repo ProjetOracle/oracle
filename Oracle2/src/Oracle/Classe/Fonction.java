@@ -7,6 +7,7 @@ package Oracle.Classe;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 /**
@@ -17,7 +18,10 @@ class Fonction implements SQL_Interface{
     
     Connecteur connecteur;
     
+    static ArrayList<Fonction> fonctions;
+    
     private int     id;
+    private String nom_fonction    = "";
     private boolean admin          = false;
     private boolean doQuizz        = false;
     private boolean createQuizz    = false;
@@ -28,14 +32,27 @@ class Fonction implements SQL_Interface{
     private boolean modifyQuestion = false;
     
     /**
+     * utilisé pour avoir une liste de fonctions.
+     */
+    public Fonction() throws SQLException
+    {
+        fonctions = new ArrayList();
+        id = -1;
+        initialize();
+    }
+    
+    /**
      * 
      * @param connecteur
      * 
      * constructeur avec connecteur seulement
      */
-    public Fonction(Connecteur connecteur)
+    public Fonction(Connecteur connecteur) throws SQLException
     {
+        fonctions = new ArrayList();
+        id = -1;
         this.connecteur = connecteur;
+        initialize();
     }
     
     /**
@@ -48,7 +65,8 @@ class Fonction implements SQL_Interface{
     public Fonction(Connecteur connecteur, Personne p) throws SQLException
     {
         this.connecteur = connecteur;
-        initialize(p.getId_personne());
+        
+        initialize(p);
     }
     
     /**
@@ -64,8 +82,10 @@ class Fonction implements SQL_Interface{
      * 
      * constructeur via les fonctions à rentrer.
      */
-    public Fonction(boolean admin, boolean doQuizz, boolean createQuizz, boolean deleteQuizz, boolean modifyQuizz, boolean createQuestion, boolean deleteQuestion, boolean modifyQuestion)
+    public Fonction(int id_fonction, String nom_fonction, boolean admin, boolean doQuizz, boolean createQuizz, boolean deleteQuizz, boolean modifyQuizz, boolean createQuestion, boolean deleteQuestion, boolean modifyQuestion)
     {
+        this.id             = id_fonction;
+        this.nom_fonction   = nom_fonction;
         this.admin          = admin;
         this.doQuizz        = doQuizz;
         this.createQuizz    = createQuizz;
@@ -76,6 +96,11 @@ class Fonction implements SQL_Interface{
         this.modifyQuestion = modifyQuestion;
     }
     
+    
+    public String getNomFonction()
+    {
+        return nom_fonction;
+    }
     public boolean getAdmin()
     {
         return admin;
@@ -101,6 +126,13 @@ class Fonction implements SQL_Interface{
         return modifyQuestion;
     }
     
+    public void setNomFonction(String nom)
+    {
+        nom = nom.toLowerCase();
+        char c[] = nom.toCharArray();
+        c[0] = Character.toUpperCase(c[0]);
+        nom = c.toString();
+    }
     public void setAdmin(boolean admin)
     {
         this.admin = admin;
@@ -137,9 +169,106 @@ class Fonction implements SQL_Interface{
      * 
      * initialise la fonction à rechercher.
      */
-    public void initialize(int id_fonction) throws SQLException
+    
+
+    @Override
+    public void update() throws SQLException {
+        String sql ="";
+        for(int i = 0; i<fonctions.size(); i++)
+        {
+            sql = "UPDATE fonctions SET(Fonction, CreateQuizz, DeleteQuizz, ModifyQuizz, CreateQuestion, DeleteQuestion, ModifyQuestion, Admin) Values (";
+            sql+= "Fonction = '"     +fonctions.get(i).nom_fonction+"',";
+            sql+= "CreateQuizz = "   +fonctions.get(i).createQuizz+",";
+            sql+= "DeleteQuizz = "   +fonctions.get(i).deleteQuizz+",";
+            sql+= "ModifyQuizz = "   +fonctions.get(i).modifyQuizz+",";
+            sql+= "CreateQuestion = "+fonctions.get(i).createQuestion+",";
+            sql+= "DeleteQuestion = "+fonctions.get(i).deleteQuestion+",";
+            sql+= "ModifyQuestion = "+fonctions.get(i).modifyQuestion+",";
+            sql+= "Admin = "         +fonctions.get(i).admin;
+            sql +="Where id_fonction = "+fonctions.get(i).id;
+            System.out.println(sql);
+            connecteur.requete(sql, i);
+        }    
+        
+    }
+    public void update(int id_fonction) throws SQLException
     {
-        ResultSet r         =connecteur.requete("SElECT * FROM fonction WHERE id_fonction = "+id_fonction+" LIMIT 1");
+            String sql ="";
+            sql = "UPDATE fonctions SET(Fonction, CreateQuizz, DeleteQuizz, ModifyQuizz, CreateQuestion, DeleteQuestion, ModifyQuestion, Admin) Values (";
+            sql+= "Fonction = '"     +this.nom_fonction+"',";
+            sql+= "CreateQuizz = "   +this.createQuizz+",";
+            sql+= "DeleteQuizz = "   +this.deleteQuizz+",";
+            sql+= "ModifyQuizz = "   +this.modifyQuizz+",";
+            sql+= "CreateQuestion = "+this.createQuestion+",";
+            sql+= "DeleteQuestion = "+this.deleteQuestion+",";
+            sql+= "ModifyQuestion = "+this.modifyQuestion+",";
+            sql+= "Admin = "         +this.admin;
+            sql +="Where id_fonction = "+this.id;
+            System.out.println(sql);
+            connecteur.requete(sql, 1);
+    }
+            
+    @Override
+    public void insert() {
+        String sql = "";
+        sql+="'"+this.nom_fonction+"',";
+        sql+=this.admin+",";
+        sql+=this.doQuizz+",";
+        sql+=this.createQuizz+",";
+        sql+=this.deleteQuizz+",";
+        sql+=this.modifyQuizz+",";
+        sql+=this.createQuestion+",";
+        sql+=this.deleteQuestion+",";
+        sql+=this.modifyQuestion;
+        
+         sql ="ISERT INTO fonction (fonction, admin, doQuizz, createQuizz, deleteQuizz, modifyQuizz, createQuestion, deleteQuestion, modifyQuestion) VALUES ("+sql+")";
+        
+         System.out.println(sql);
+         connecteur.requete(sql, 1);
+    }
+
+    @Override
+    public void delete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
+    
+    
+    
+    
+    @Override
+    public void initialize() throws SQLException {
+        ResultSet r = connecteur.requete("Select * From Fonction");
+       if(fonctions == null) 
+       {
+           System.out.println("fonctions n'est pas set, tentative de mise à jour via un id");
+           if(this.id <0) 
+           {
+               System.out.println("fonction n'est pas set - tentative de mise a jour echouee car aucun id valide trouve");
+           } 
+           else 
+           {
+               System.out.println("fonction n'est pas set - un id a été trouvé, la fonction update (int id_fonction) est appelée");
+               fonctions.add(initialize(id));
+           }
+       } 
+       else 
+       {
+           while(r.next())
+           {
+               System.out.println("ajoute de la fonction : id = "+r.getInt("id_fonction")+" - "+r.getString("Fonction")+"");
+               fonctions.add(new Fonction(r.getInt("id_fonction"),r.getString("Fonction"), r.getBoolean("admin"), r.getBoolean("doQuizz"),r.getBoolean("createQuizz"), r.getBoolean("deleteQuizz"), r.getBoolean("modifyQuizz"), r.getBoolean("createQuestion"), r.getBoolean("deleteQuestion"), r.getBoolean("modifyQuestion")));
+           }
+       }
+       
+       
+    }
+    @Override
+    public Fonction initialize(int id) throws SQLException{
+           
+        ResultSet r         =connecteur.requete("SElECT * FROM fonction WHERE id_fonction = "+id+" LIMIT 1");
         r.first();
         this.id             = r.getInt("id_fonction");
         this.admin          = r.getBoolean("admin");
@@ -149,23 +278,23 @@ class Fonction implements SQL_Interface{
         this.createQuestion = r.getBoolean("createQuestion");
         this.deleteQuestion = r.getBoolean("deleteQuestion");
         this.modifyQuestion = r.getBoolean("modifyQuestion");
-        
-    }
-
-    @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void insert() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        return(this);
+       }
     
+    public Fonction initialize(Personne p) throws SQLException{
+        ResultSet r         = connecteur.requete("SELECT id, admin, createQuizz, deleteQuizz, modifyQuizz, createQuestion, deleteQuestion, modifyQuestion from Personne join Fonction on personne.id_fonction = fonction.id where id_personne = "+p.getId());
+        r.first();
+        
+        this.id             = r.getInt("id_fonction");
+        this.admin          = r.getBoolean("admin");
+        this.createQuizz    = r.getBoolean("createQuizz");
+        this.deleteQuizz    = r.getBoolean("deleteQuizz");
+        this.modifyQuizz    = r.getBoolean("modifyQuizz");
+        this.createQuestion = r.getBoolean("createQuestion");
+        this.deleteQuestion = r.getBoolean("deleteQuestion");
+        this.modifyQuestion = r.getBoolean("modifyQuestion");
+        
+        return(this);
+    }
     
 }

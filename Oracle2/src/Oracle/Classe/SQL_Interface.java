@@ -5,12 +5,18 @@
  */
 package Oracle.Classe;
 
+
+import java.sql.SQLException;
 /**
  *
  * @author WorkStation
+ * @param <T>
  */
-public interface SQL_Interface {
-    public void update();
-    public void insert();
-    public void delete(); 
+public interface SQL_Interface <T>{
+    
+    public void initialize() throws SQLException;
+    public T    initialize(int id) throws SQLException;
+    public void update() throws SQLException;
+    public void insert() throws SQLException;
+    public void delete() throws SQLException; 
 }

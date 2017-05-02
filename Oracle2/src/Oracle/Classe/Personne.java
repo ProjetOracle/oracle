@@ -15,6 +15,8 @@ import java.util.*;
  */
 public class Personne implements SQL_Interface{
     
+    static ArrayList<Personne> personnes;
+    
     Connecteur       connecteur= new Connecteur();
     private int      id_personne;
     private String   login;
@@ -27,8 +29,8 @@ public class Personne implements SQL_Interface{
      * 
      */
     public Personne() {
-        this.listeOfQuizz = new ArrayList<Quizz>();
-        fonction          = new Fonction(connecteur);
+        personnes = new ArrayList();
+        id_personne = -1;
     }
     
     /**
@@ -36,12 +38,12 @@ public class Personne implements SQL_Interface{
      * @param id_personne
      * @param login 
      */
-   public Personne(int id_personne, String login)
+   public Personne(int id_personne, String login) throws SQLException
    {
        this.listeOfQuizz = new ArrayList<Quizz>();
        this.id_personne  = id_personne;
        this.login        = login;
-       fonction          = new Fonction(connecteur);
+       fonction          = new Fonction(connecteur, this);
        
    }
    
@@ -51,10 +53,11 @@ public class Personne implements SQL_Interface{
     * @param login
     * @param listeOfQuizz 
     */
-   public Personne(int id_personne, String login, ArrayList listeOfQuizz)
-   {
-        this.listeOfQuizz = new ArrayList<Quizz>();
-        fonction          = new Fonction(connecteur);
+   public Personne(int id_personne, String login, ArrayList listeOfQuizz) throws SQLException
+   {    
+       this.id_personne = id_personne;
+       this.listeOfQuizz = new ArrayList<Quizz>();
+       fonction          = new Fonction(connecteur, this);
    }
    
    /**
@@ -101,6 +104,7 @@ public class Personne implements SQL_Interface{
                 this.setLogin(r.getString("PSEUDO"));
                 this.setId_personne(r.getInt("ID_PERSONNE"));
                 //fonction.initialize(r.getInt("ID_FONCTION"));
+                initialize();
                 return true;
             }
        
@@ -151,6 +155,11 @@ public class Personne implements SQL_Interface{
         this.id_personne = id_personne;
     }
 
+    
+    
+    
+    
+    
     @Override
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -164,6 +173,46 @@ public class Personne implements SQL_Interface{
     @Override
     public void delete() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Personne initialize(int id) throws SQLException {
+        fonction = fonction.initialize(id);
+        
+        return(this);
+    }
+    
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
+    
+    @Override
+    public void initialize() throws SQLException {
+        String sql = "";
+        ResultSet r = connecteur.requete("SELECT * FROM personne");
+        if (personnes ==null)
+        {
+             System.out.println("personnes n'est pas set, tentative de mise à jour via un id");
+            if(this.id_personne<0)
+            {
+                System.out.println("personnes n'est pas set - tentative de mise a jour echouee car aucun id valide trouve");
+            }
+            else
+            {
+               System.out.println("Personnes n'est pas set - un id a été trouvé, la fonction update (int id_fonction) est appelée");
+               personnes.add(initialize(id_personne));
+            }
+        }
+        else
+        {
+            while(r.next())
+           {
+               System.out.println("ajoute de la personne: id = "+r.getInt("id_personne")+" - "+r.getString("nom")+"");
+               personnes.add(new Personne(r.getInt("id_personne"), r.getString("nom")));
+           }
+        }
     }
     
     
