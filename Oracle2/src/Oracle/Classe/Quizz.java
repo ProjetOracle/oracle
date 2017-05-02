@@ -25,9 +25,11 @@ public class Quizz implements SQL_Interface{
     private String classement;
     private int    fini;     
    
-            
+    public Quizz() throws SQLException {
+        initialize();
+    }
     
-    private ArrayList<Quizz> quizzList;
+    private static ArrayList<Quizz> quizzList;
     /**
      * 
      * @param connecteur
@@ -138,9 +140,10 @@ public class Quizz implements SQL_Interface{
     
     
     
+    @Override
     public void initialize() throws SQLException
     {
-        ResultSet r = connecteur.requete("SELECT * FROM QUIZZ");
+        ResultSet r = connecteur.requete("SELECT * FROM quizz");
         
         while(r.next())
         {
@@ -169,7 +172,7 @@ public class Quizz implements SQL_Interface{
             classement = classement_personne+"/"+classement_total;
             
             
-            quizzList.add(new Quizz(r.getString("NOM"), r.getInt("DUREE_QUIZZ"), r.getInt("NIVEAU"), r_score.getInt("SCORE"), r_maxScore.getInt("SCORE"), classement, classement_total));
+            getQuizzList().add(new Quizz(r.getString("NOM"), r.getInt("DUREE_QUIZZ"), r.getInt("NIVEAU"), r_score.getInt("SCORE"), r_maxScore.getInt("SCORE"), classement, classement_total));
         }    
              
     }
@@ -197,5 +200,12 @@ public class Quizz implements SQL_Interface{
     @Override
     public void delete(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * @return the quizzList
+     */
+    public ArrayList<Quizz> getQuizzList() {
+        return quizzList;
     }
 }
