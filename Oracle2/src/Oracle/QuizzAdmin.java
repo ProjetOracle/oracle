@@ -35,8 +35,8 @@ public class QuizzAdmin  extends JFrame implements ActionListener {
         JPanel content = new JPanel();
         nom = new JPersoTextField("nomQuizz");
         duree = new JPersoTextField("dureeQuizz");
-        addQuestion = new JPersoButton("addQuestion");
-        importQuizz = new JPersoButton("importQuestion");
+        addQuestion = new JPersoButton("Ajouter une question");
+        importQuizz = new JPersoButton("Importer une question");
         listeNiveaux = new JComboBox(niveaux);
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
