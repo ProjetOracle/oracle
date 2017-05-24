@@ -23,7 +23,7 @@ public class Oracle {
         // TODO code application logic here
         Connecteur connecteur = new Connecteur();
         listeFenetres = new ArrayList();
-        WindowConnection w = new WindowConnection();
+        WindowConnection w = new WindowConnection(connecteur);
         Administration admin = new Administration();
         ListeQuizz quizzs = new ListeQuizz(connecteur);
         QuizzAdmin creerQuizz = new QuizzAdmin();

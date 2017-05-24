@@ -5,6 +5,7 @@
  */
 package Oracle.Perso_Jclasse;
 
+import Oracle.Classe.Connecteur;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
@@ -13,10 +14,11 @@ import javax.swing.JTable;
  * @author Daky
  */
 public class JTableClassement extends JTable {
+    private Connecteur connecteur;
     private JTable tableau;
     
     public JTableClassement() {
-        tableau = new JTable(new TableModelClassement());
+        tableau = new JTable(new TableModelClassement(connecteur));
     }
 
     /**

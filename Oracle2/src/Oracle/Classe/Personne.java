@@ -243,7 +243,7 @@ public class Personne implements SQL_Interface{
             while(r.next())
            {
                System.out.println("ajoute de la personne: id = "+r.getInt("id_personne")+" - "+r.getString("pseudo")+"");
-                getPersonnes().add(new Personne(r.getInt("id_personne"), r.getString("pseudo")));
+                getPersonnes().add(new Personne(connecteur, r.getInt("id_personne"), r.getString("pseudo")));
            }
         }
     }

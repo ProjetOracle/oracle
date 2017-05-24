@@ -16,12 +16,14 @@ import javax.swing.table.AbstractTableModel;
  * @author Daky
  */
 public class TableModelListeQuizz extends AbstractTableModel {
+    private Connecteur connecteur;
     public Quizz quizzs;
     public String[] nomColonnes = {"Nom", "Durée", "Niveau", "Score", "Classement", "Fini"};
     public String[] classement = {"1", "2", "3"};
     public String[] fini = {"oui", "non", "oui"};
     
     public TableModelListeQuizz(Connecteur connecteur) throws SQLException {
+        this.connecteur = connecteur;
         quizzs = new Quizz(connecteur);
         System.out.println(quizzs);    }
     

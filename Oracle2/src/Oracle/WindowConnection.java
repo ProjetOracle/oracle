@@ -5,6 +5,7 @@
  */
 package Oracle;
 
+import Oracle.Classe.Connecteur;
 import Oracle.Classe.Personne;
 import Oracle.Perso_Jclasse.JPersoButton;
 import Oracle.Perso_Jclasse.JPersoTextField;
@@ -30,20 +31,26 @@ import javax.swing.SwingConstants;
 
 public class WindowConnection extends JFrame implements ActionListener{
     
+    Connecteur connecteur; 
+    
     Personne personne;
+    
+    
     JPersoTextField login;
     JPersoTextField mdp;
     //Label erreur;
     JTextArea erreur;
     JPersoButton buttonConnection;
     
-    public WindowConnection()
+    public WindowConnection(Connecteur connecteur)
     {
-        personne = new Personne();
+        this.connecteur = connecteur;
+        personne = new Personne(connecteur);
         createWindows();
     }
     public WindowConnection(Personne personne)
     {
+        this.connecteur = personne.getConnecteur();
         this.personne = personne;
         createWindows();
     }

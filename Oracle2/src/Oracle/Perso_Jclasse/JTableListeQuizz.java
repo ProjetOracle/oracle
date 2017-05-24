@@ -15,9 +15,11 @@ import javax.swing.JTable;
  * @author Daky
  */
 public class JTableListeQuizz extends JTable {
+    private Connecteur connecteur;
     private JTable tableau;
     
     public JTableListeQuizz(Connecteur connecteur) throws SQLException {
+        this.connecteur = connecteur;
         tableau = new JTable(new TableModelListeQuizz(connecteur));
     }
 
