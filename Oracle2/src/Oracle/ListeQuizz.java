@@ -5,6 +5,7 @@
  */
 package Oracle;
 
+import Oracle.Classe.Connecteur;
 import Oracle.Classe.Personne;
 import Oracle.Perso_Jclasse.JPersoButton;
 import Oracle.Perso_Jclasse.JTableListeQuizz;
@@ -12,6 +13,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,13 +26,13 @@ public class ListeQuizz extends JFrame implements ActionListener {
     
     JTableListeQuizz quizzs;
     
-    public ListeQuizz() {
-        createWindow();
+    public ListeQuizz(Connecteur connecteur) throws SQLException {
+        createWindow(connecteur);
     }
     
-    public void createWindow() {
+    public void createWindow(Connecteur connecteur) throws SQLException {
         JPanel content = new JPanel();
-        quizzs = new JTableListeQuizz();
+        quizzs = new JTableListeQuizz(connecteur);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(400, 600);

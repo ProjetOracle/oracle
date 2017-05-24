@@ -11,6 +11,7 @@ import Oracle.Perso_Jclasse.JPersoTextField;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -20,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -61,44 +63,53 @@ public class WindowConnection extends JFrame implements ActionListener{
         buttonConnection.addActionListener(this);
         login = new JPersoTextField("login");
         mdp = new JPersoTextField("Password");
-        JLabel labelLogin = new JLabel("labelLogin");
-        JLabel labelMdp = new JLabel("labelMdp");
-        
-        labelLogin.setText("Login : ");
-        labelMdp.setText("Mot de passe : ");
+        JLabel labelLogin = new JLabel("labelLogin", SwingConstants.CENTER);
+        JLabel labelMdp = new JLabel("labelMdp", SwingConstants.CENTER);
+                
+        labelLogin.setText("Login");
+        labelMdp.setText("Mot de passe");
         //erreur = new Label("");
         erreur = new JTextArea();
         erreur.setEditable(false);
         erreur.setBackground(this.getBackground());
-        
+         
         GridBagConstraints gbc = new GridBagConstraints();
        
         gbc.fill = GridBagConstraints.BOTH;
         //gbc.fill = GridBagConstraints.HORIZONTAL;
         
         this.setLocationRelativeTo(null);
+        
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         
         gbc.gridx = 1;
         gbc.gridy = 1;
         this.add(labelLogin,gbc);
+
         gbc.gridx = 1;
         gbc.gridy = 2;
+        gbc.insets = new Insets(0,0,10,0);
         this.add(login,gbc);
+
         gbc.gridx = 1;
         gbc.gridy = 3;
+        gbc.insets = new Insets(0,0,0,0);
         this.add(labelMdp,gbc);
+
         gbc.gridx = 1;
         gbc.gridy = 4;
+        gbc.insets = new Insets(0,0,20,0);              
         this.add(mdp,gbc);
+
         gbc.gridx = 1;
         gbc.gridy = 5;
+        gbc.insets = new Insets(0,0,0,0);
         this.add(buttonConnection,gbc);
+
         gbc.gridx = 1;
         gbc.gridheight=4;
-        gbc.gridy = 6;
-        
+        gbc.gridy = 6;   
         this.add(erreur, gbc);
         
         this.setVisible(true);

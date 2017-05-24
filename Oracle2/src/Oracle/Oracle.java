@@ -5,6 +5,8 @@
  */
 package Oracle;
 
+import Oracle.Classe.Connecteur;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -17,12 +19,13 @@ public class Oracle {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // TODO code application logic here
+        Connecteur connecteur = new Connecteur();
         listeFenetres = new ArrayList();
         WindowConnection w = new WindowConnection();
         Administration admin = new Administration();
-        ListeQuizz quizzs = new ListeQuizz();
+        ListeQuizz quizzs = new ListeQuizz(connecteur);
         QuizzAdmin creerQuizz = new QuizzAdmin();
         Classement classement = new Classement();
     }

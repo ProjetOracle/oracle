@@ -21,8 +21,8 @@ public class TableModelListeQuizz extends AbstractTableModel {
     public String[] classement = {"1", "2", "3"};
     public String[] fini = {"oui", "non", "oui"};
     
-    public TableModelListeQuizz() throws SQLException {
-        quizzs = new Quizz();
+    public TableModelListeQuizz(Connecteur connecteur) throws SQLException {
+        quizzs = new Quizz(connecteur);
         System.out.println(quizzs);    }
     
     @Override
