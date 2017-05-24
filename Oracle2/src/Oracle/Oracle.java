@@ -8,6 +8,7 @@ package Oracle;
 import Oracle.Classe.Connecteur;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Oracle {
 
-    static public ArrayList listeFenetres;
+    static public ArrayList<JFrame> listeFenetres;
     /**
      * @param args the command line arguments
      */
@@ -28,5 +29,6 @@ public class Oracle {
         ListeQuizz quizzs = new ListeQuizz(connecteur);
         QuizzAdmin creerQuizz = new QuizzAdmin();
         Classement classement = new Classement();
+    
     }
 }
