@@ -34,7 +34,7 @@ public class WindowConnection extends JFrame implements ActionListener, Componen
     
     Connecteur connecteur; 
     
-    Personne personne;
+    private Personne personne;
     
     
     JPersoTextField login;
@@ -138,13 +138,13 @@ public class WindowConnection extends JFrame implements ActionListener, Componen
             if(login.getText().length()!=0 || mdp.getText().length()!=0)
             {
                 try {
-                    if(personne.seConnecter(login.getText(),mdp.getText()))
+                    if(getPersonne().seConnecter(login.getText(),mdp.getText()))
                     {
                         System.out.println("connection etablie");
                         for (int i = 0; i<Oracle.listeFenetres.size(); i++) {
                             if (Oracle.listeFenetres.get(i).getClass().toString().equals("class Oracle.ListeQuizz")) {
                                 ListeQuizz tmp = (ListeQuizz)Oracle.listeFenetres.get(i);
-                                tmp.affichage(personne);
+                                tmp.affichage(getPersonne());
                                 tmp.setVisible(true);
                             }
                             else {
@@ -199,5 +199,19 @@ public class WindowConnection extends JFrame implements ActionListener, Componen
     @Override
     public void componentHidden(ComponentEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * @return the personne
+     */
+    public Personne getPersonne() {
+        return personne;
+    }
+
+    /**
+     * @param personne the personne to set
+     */
+    public void setPersonne(Personne personne) {
+        this.personne = personne;
     }
 }
