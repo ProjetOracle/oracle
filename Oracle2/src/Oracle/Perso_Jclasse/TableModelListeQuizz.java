@@ -62,4 +62,8 @@ public class TableModelListeQuizz extends AbstractTableModel {
                 return null; //Ne devrait jamais arriver
         }
     }
+    public void initialize(Personne personne) throws SQLException
+    {
+        quizzs.getQuizzList().get(0).initialize(personne);
+    }
 }

@@ -6,6 +6,7 @@
 package Oracle.Perso_Jclasse;
 
 import Oracle.Classe.Connecteur;
+import Oracle.Classe.Personne;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -35,6 +36,11 @@ public class JTableListeQuizz extends JTable {
      */
     public void setTableau(JTable tableau) {
         this.tableau = tableau;
+    }
+    
+    public void initialize(Personne personne)
+    {
+        
     }
     
     

@@ -176,7 +176,12 @@ public class Quizz implements SQL_Interface{
         }    
              
     }
-
+    
+    public void initialize(Personne personne) throws SQLException
+    {
+    this.personne = personne;
+    initialize();
+    }
     
      @Override
     public Object initialize(int id) throws SQLException {

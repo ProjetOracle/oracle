@@ -23,13 +23,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
-
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 /**
  *
  * @author WorkStation
  */
 
-public class WindowConnection extends JFrame implements ActionListener{
+public class WindowConnection extends JFrame implements ActionListener, ComponentListener {
     
     Connecteur connecteur; 
     
@@ -178,5 +179,25 @@ public class WindowConnection extends JFrame implements ActionListener{
                 }        
             }     
         }
+    }
+
+    @Override
+    public void componentResized(ComponentEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void componentShown(ComponentEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void componentHidden(ComponentEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
