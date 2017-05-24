@@ -5,6 +5,7 @@
  */
 package Oracle.Perso_Jclasse;
 
+import Oracle.Classe.Connecteur;
 import Oracle.Classe.Personne;
 import Oracle.Classe.Quizz;
 import java.sql.SQLException;

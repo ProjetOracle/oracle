@@ -25,7 +25,8 @@ public class Quizz implements SQL_Interface{
     private String classement;
     private int    fini;     
    
-    public Quizz() throws SQLException {
+    public Quizz(Connecteur connecteur) throws SQLException {
+        this.connecteur = connecteur;
         initialize();
     }
     
@@ -82,7 +83,6 @@ public class Quizz implements SQL_Interface{
         this.niveau         = q.niveau;
         this.nom            = q.nom;
         this.personne       = q.personne;
-        this.quizzList      = q.quizzList;
         this.votre_score    = q.votre_score;
     }
     
@@ -177,6 +177,13 @@ public class Quizz implements SQL_Interface{
              
     }
 
+    
+     @Override
+    public Object initialize(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
     @Override
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -192,10 +199,7 @@ public class Quizz implements SQL_Interface{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public Object initialize(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     @Override
     public void delete(int id) throws SQLException {

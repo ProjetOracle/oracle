@@ -79,22 +79,49 @@ public class Question implements SQL_Interface{
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String str = "";
+        str += "Update Question SET ";
+        str += "Intitule = '"+this.intitule+"'";
+        str += "image = '"+this.imagePath+"'";
+        str+="WHERE id_question = "+this.id_question;
+        
+        connecteur.requete(str,1);
     }
 
     @Override
     public void insert() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "";
+        sql += this.intitule+",";
+        sql += this.imagePath;
+                
+                
+        sql+="INSERT INTO QUESTION () VALUES  ("+sql+")";
+        
+        connecteur.requete(sql, 1);
     }
 
     @Override
-    public void delete() {
-       
+    public void delete() throws SQLException {
+       if(this.id_question<0)
+       {
+           System.out.println("Supression impossible,ceci est la liste des questions");
+       }
+       else
+       {
+           delete(this.id_question);
+       }
     }
     
      @Override
     public void delete(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       for(Question q : questions)
+       {
+           if(q.id_question == id)
+           {
+               questions.remove(q);
+               break;
+           }
+       }
     }
 
     @Override
