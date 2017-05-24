@@ -17,7 +17,7 @@ public class Personne implements SQL_Interface{
     
     private static ArrayList<Personne> personnes;
     
-    Connecteur       connecteur= new Connecteur();
+    Connecteur       connecteur;
     private int      id_personne;
     private String   login;
     private Fonction fonction;
@@ -28,9 +28,10 @@ public class Personne implements SQL_Interface{
     /**
      * 
      */
-    public Personne() {
-        personnes = new ArrayList();
-        id_personne = -1;
+    public Personne(Connecteur connecteur) {
+        this.connecteur = connecteur;
+        personnes       = new ArrayList();
+        id_personne     = -1;
     }
     
     /**
@@ -38,8 +39,9 @@ public class Personne implements SQL_Interface{
      * @param id_personne
      * @param login 
      */
-   public Personne(int id_personne, String login) throws SQLException
+   public Personne(Connecteur connecteur, int id_personne, String login) throws SQLException
    {
+       this.connecteur   = connecteur;
        this.listeOfQuizz = new ArrayList<Quizz>();
        this.id_personne  = id_personne;
        this.login        = login;
@@ -53,9 +55,10 @@ public class Personne implements SQL_Interface{
     * @param login
     * @param listeOfQuizz 
     */
-   public Personne(int id_personne, String login, ArrayList listeOfQuizz) throws SQLException
+   public Personne( Connecteur connecteur, int id_personne, String login, ArrayList listeOfQuizz) throws SQLException
    {    
-       this.id_personne = id_personne;
+       this.connecteur   = connecteur;
+       this.id_personne  = id_personne;
        this.listeOfQuizz = new ArrayList<Quizz>();
        fonction          = new Fonction(connecteur, this);
    }
