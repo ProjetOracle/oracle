@@ -224,7 +224,7 @@ class Fonction implements SQL_Interface{
         sql+=this.deleteQuestion+",";
         sql+=this.modifyQuestion;
         
-         sql ="ISERT INTO fonction (fonction, admin, doQuizz, createQuizz, deleteQuizz, modifyQuizz, createQuestion, deleteQuestion, modifyQuestion) VALUES ("+sql+")";
+         sql ="INSERT INTO fonction (fonction, admin, doQuizz, createQuizz, deleteQuizz, modifyQuizz, createQuestion, deleteQuestion, modifyQuestion) VALUES ("+sql+")";
         
          System.out.println(sql);
          connecteur.requete(sql, 1);
@@ -254,13 +254,7 @@ class Fonction implements SQL_Interface{
                 fonctions.remove(f);
             }
         }
-        
     }
-    
-    
-    
-    
-    
     
     @Override
     public void initialize() throws SQLException {
@@ -286,11 +280,8 @@ class Fonction implements SQL_Interface{
                fonctions.add(new Fonction(r.getInt("id_fonction"),r.getString("Fonction"), r.getBoolean("admin"), r.getBoolean("doQuizz"),r.getBoolean("createQuizz"), r.getBoolean("deleteQuizz"), r.getBoolean("modifyQuizz"), r.getBoolean("createQuestion"), r.getBoolean("deleteQuestion"), r.getBoolean("modifyQuestion")));
            }
        }
-       
-       
     }
-    
-    
+        
     @Override
     public Fonction initialize(int id) throws SQLException{
            
@@ -313,7 +304,4 @@ class Fonction implements SQL_Interface{
         
         return(this);
     }
-
-    
-    
 }

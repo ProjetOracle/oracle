@@ -5,21 +5,27 @@
  */
 package Oracle;
 
+import Oracle.Classe.Connecteur;
 import Oracle.Classe.Personne;
 import Oracle.Perso_Jclasse.JPersoButton;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
  * @author WorkStation
  */
 public class ListeQuizz extends JFrame implements ActionListener {
+    
+    Connecteur connexion = new Connecteur();
     
     public ListeQuizz() {
         createWindow();
@@ -29,13 +35,14 @@ public class ListeQuizz extends JFrame implements ActionListener {
         JPanel content = new JPanel();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(400, 600);
+        this.setSize(600, 800);
     
         Oracle.listeFenetres.add(this);
     }
     
-    public void affichage(Personne personne) {
-        JLabel pseudo = new JLabel(personne.getLogin());
+    public void affichage(Personne personne) throws SQLException {
+        
+        JLabel pseudo = new JLabel("Nom du joueur : " + personne.getLogin());
         JPersoButton admin = new JPersoButton("administration");
         admin.setText("Administration");
         admin.addActionListener(this);
@@ -44,18 +51,71 @@ public class ListeQuizz extends JFrame implements ActionListener {
         classemnt.setText("Classement");
         classemnt.addActionListener(this);
                 
-        
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
 
         GridBagConstraints gbc = new GridBagConstraints();
        
         gbc.fill = GridBagConstraints.BOTH;
-        //gbc.fill = GridBagConstraints.HORIZONTAL;
         
         this.setLocationRelativeTo(null);
+
+        String sql = "SELECT * FROM Quizz";
+        ResultSet rs = connexion.requete(sql);      
+        
+        gbc.gridx=1;
+        gbc.gridy=4;
+        this.add(new JLabel("Id"), gbc);
+        
+        gbc.gridx=2;
+        gbc.gridy=4;
+        this.add(new JLabel("Duree"), gbc);
+        
+        gbc.gridx=3;
+        gbc.gridy=4;
+        this.add(new JLabel("Nom"), gbc);
+        
+        gbc.gridx=4;
+        gbc.gridy=4;
+        this.add(new JLabel("Niveau"), gbc);
+        
+        int x = 1;
+        int y = 5;    
+        while(rs.next()) {
+            int id = rs.getInt(2);
+            gbc.gridx = x;
+            gbc.gridy = y;
+            this.add(new JTextField(Integer.toString(id)), gbc);
+            x++;
+            
+            int duree = rs.getInt(1);
+            gbc.gridx = x;
+            gbc.gridy = y;
+            this.add(new JTextField(Integer.toString(duree)), gbc);
+            x++;
+            
+            /*int idPersonne = rs.getInt(3);
+            gbc.gridx = x;
+            gbc.gridy = y;
+            this.add(new JTextField(Integer.toString(idPersonne)), gbc);
+            x++;*/     
+            
+            String nom = rs.getString(4);
+            gbc.gridx = x;
+            gbc.gridy = y;
+            this.add(new JTextField(nom), gbc);
+            x++;
+            
+            int niveau = rs.getInt(5);
+            gbc.gridx = x;
+            gbc.gridy = y;
+            this.add(new JTextField(Integer.toString(niveau)), gbc);
+            x=1;
+            y++;
+        }
+
         gbc.gridheight = 1;
-        gbc.gridwidth = 1;
+        gbc.gridwidth = 4;
         
         gbc.gridx = 1;
         gbc.gridy = 1; 
